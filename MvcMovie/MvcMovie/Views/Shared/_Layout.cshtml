@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Movie App</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <style>
+        .img-menu{
+            width: 200px;
+            align-self: flex-start;
+        }
+
+        .navbar-menu {
+            display: flex;
+            flex-direction: column;
+            
+        }
+
+        .navbar-nav {
+            align-self: flex-end;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 0 1rem !important;
+            margin: 2px 0;
+            border-right: 1px solid #222;
+        }
+
+        a.nav-link:hover {
+            color: #ffc91c !important;
+        }
+
+        .active {
+            color: #ffc91c !important;
+        }
+
+        .container {
+            max-width: 1600px !important;
+            width: 1600px !important;
+            margin: 0 auto;
+           
+        }
+
+        .footer {
+            background-color: #ffc91c;
+        }
+        
+    </style>
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                @*<a class="navbar-brand" asp-controller="Movies" asp-action="Index">My Movies</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>*@
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between navbar-menu">
+                    <img class="img-menu" src="~/Images/440px-Desktop_computer_clipart_-_Yellow_theme.svg.png" />
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark welcome-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark movies-link" asp-area="" asp-controller="Movies" asp-action="Index">My Movies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark privacy-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - Movie App
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+
+        if ($(".privacy-paragraph").length) {
+            $(".privacy-link").addClass("active")
+        }
+        if ($(".welcome-page").length) {
+            $(".welcome-link").addClass("active")
+        }
+        if ($(".movies-page").length) {
+            $(".movies-link").addClass("active")
+        }
+
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,113 @@
+﻿@model IEnumerable<MvcMovie.Models.Movie>
+
+@{
+    ViewData["Title"] = "Movies";
+}
+
+
+<style>
+    .table {
+        width: 100%;
+        font-size: 20px;
+        text-align: center;
+    }
+    .create-movie {
+        padding: 5px 16px;
+        border-radius: 25px;
+        background-color: #ffc91c;
+        color: #000;
+        
+    }
+    p {
+        margin: 18px 0;
+    }
+    .button {
+        color: orange;
+    }
+
+    .table-top {
+        border-top-color: #fff;
+        font-size: 20px;
+        
+    }
+    .table td, .table th {
+        vertical-align: middle !important;
+        text-align: left !important;
+    }
+    .movies-page {
+        color: #ff9f00;
+    }
+    
+</style>
+
+<h1 class="movies-page">Movies</h1>
+
+<p>
+    <a class="create-movie" asp-action="Create">Add a movie</a>
+</p>
+<table class="table">
+    <thead>
+        <tr class="table-top">
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DirectedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DistributedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RunningTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Language)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DirectedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DistributedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RunningTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language)
+            </td>
+            <td>
+                <a class="button" asp-action="Edit" asp-route-id="@item.Id">Edit</a> <br />
+                <a class="button" asp-action="Details" asp-route-id="@item.Id">Details</a> <br />
+                <a class="button" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
